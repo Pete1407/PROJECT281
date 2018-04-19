@@ -71,7 +71,8 @@ if (mysqli_connect_error()){
 		while($data6 = mysqli_fetch_array($qry6)){
 			  ?>
             <!-- List of links under menuset 1 -->
-            <li><a href="#" title="Link"><?php echo $data6['name_Category'] ?></a></li>
+			 
+            <li><a href="category.php?nameC=<?php echo $data6['id_Category']; ?>" title="Link"><?php echo $data6['name_Category'] ?></a></li>
             
 			  <?php } ?>
           </ul>

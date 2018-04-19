@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<?php
+<?php
 $host = "localhost";
 $dbusername = "root";
 $dbpassword = "";
@@ -28,21 +28,22 @@ if($conn->error)
 	if($check)
 	{
 		echo "Success Login"; ?> <br> 
-		<a href="shopping.php">go Shopping Online</a> 
-	<?
+		<a href="shopping.php">go Shopping Online</a>  <?php
+		$sql2 = "DELETE  FROM Shopping_Cart";
+		$conn->query($sql2);
+		$sql3 = "DELETE  FROM Like_Product";
+		$conn->query($sql3);
+	
 	}
 	else
 	{
 		echo "Wrong User name & password !!"; ?> <br> 
-		<a href=javascript:history.back(1)>go back</a> 
-	<?
+		<a href=javascript:history.back(1)>go back</a> <?php
+	
 		
 	}
 
-
 ?>
-	
-	
 	
 </body>
 </html>

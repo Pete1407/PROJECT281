@@ -23,7 +23,7 @@
 	}
 	
 	
-	$strSQL = "DELETE FROM Shopping_Cart WHERE num = '".$_GET['CusID']."' ";
+	$strSQL = "DELETE FROM Shopping_Cart WHERE num = '".$_GET[  'CusID']."' ";
 	$conn->query($strSQL);
 	$objQuery = mysql_query($strSQL);
 	

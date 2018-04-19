@@ -1,31 +1,25 @@
-
-
-
-
 <!doctype html>
 <?php
 
-$host = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "project_oo";
+	$host = "localhost";
+	$dbusername = "root";
+	$dbpassword = "";
+	$dbname = "project_oo";
 
-// Create connection
-$conn = new mysqli ($host, $dbusername, $dbpassword, $dbname);
+	// Create connection
+	$conn = new mysqli ($host, $dbusername, $dbpassword, $dbname);
 	
 	
-if (mysqli_connect_error()){
-  die('Connect Error ('. mysqli_connect_errno() .') '
-    . mysqli_connect_error());
-}
-
-
+	if (mysqli_connect_error()){
+		die('Connect Error ('. mysqli_connect_errno() .') '
+			. mysqli_connect_error());
+	}
 
 ?>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>eCommerce template By Adobe Dreamweaver CC</title>
+<title>Shopping EiEi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="eCommerceAssets/styles/eCommerceStyle.css" rel="stylesheet" type="text/css">
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
@@ -65,7 +59,7 @@ if (mysqli_connect_error()){
           <h2><!-- Title for menuset 1 --> Category</h2>
           <hr>
           <ul>
-			  <?
+			  <?php
 			  $sql3 = "SELECT * FROM Category;";
 	
 		$qry2 = mysqli_query($conn,$sql3);
@@ -74,9 +68,9 @@ if (mysqli_connect_error()){
 		while($data3 = mysqli_fetch_array($qry2)){
 			  ?>
             <!-- List of links under menuset 1 -->
-            <li><a href="category.php?nameC=<?  echo $data3['id_Category']; ?>" title="Link"><? echo $data3['name_Category'] ?></a></li>
+            <li><a href="category.php?nameC=<?php  echo $data3['id_Category']; ?>" title="Link"><?php echo $data3['name_Category'] ?></a></li>
             
-			  <? } ?>
+			  <?php } ?>
           </ul>
         </nav>
        
@@ -84,20 +78,9 @@ if (mysqli_connect_error()){
     </section>
     <section class="mainContent">
 		<font face="'Montserrat', sans-serif" color= #343434 size = 3 >
-	<?php
-$host = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "project_oo";
 
-// Create connection
-$conn = new mysqli ($host, $dbusername, $dbpassword, $dbname);
-if($conn->error)
-{
-	echo "Fail to connect";
-}
-
-		?>    <h1>favorite</h1>  <?
+			
+			<h1>favorite</h1>  <?php
 		if(empty($_GET['id'])){
 			//echo "eiei";
 		}else{
@@ -110,7 +93,7 @@ if($conn->error)
 				$sql7 = "INSERT INTO Like_Product (ID_product)
   				values ( '$id2' )";
 				$conn->query($sql7);
-				?>    <h3> Add favorite !</h3>  <?
+				?>    <h3> Add favorite !</h3>  <?php
 			}else{
 				
 			}
@@ -119,55 +102,38 @@ if($conn->error)
 	?>
 	
 	<table width="750" border="1">
-
 <tr>
-
-<th width="91"> <div align="center">ProductID </div></th>
-<th width="198"> <div align="center">Name </div></th>
-<th width="97"> <div align="center">Price </div></th>
-<th width="30"> <div align="center">Delete </div></th>
+	<th width="91"> <div align="center">ProductID </div></th>
+	<th width="198"> <div align="center">Name </div></th>
+	<th width="97"> <div align="center">Price </div></th>
+	<th width="30"> <div align="center">Delete </div></th>
 </tr>
 
-	<?
-	
-
-	$sql2 = "SELECT  * FROM Like_Product";
-	$qry2 = mysqli_query($conn,$sql2);
-	
-	
+	<?php
+		$sql2 = "SELECT  * FROM Like_Product";
+		$qry2 = mysqli_query($conn,$sql2);
+		
 	while($data2 = mysqli_fetch_array($qry2)){
+		
 		$id = $data2['ID_product'];
-		
 		$sql = "SELECT  * FROM Product WHERE id_Product = '".$id."'";
-	
 		$qry = mysqli_query($conn,$sql);
-		
 		$data3 = mysqli_fetch_array($qry);
 		
 		?> <tr> 
-		<td><div align="center"><? echo $data3['id_Product'] ; ?> </div></td> 
-		<td><? echo $data3['nameProduct'] ; ?> </td> 
-		<td><div align="center"><? echo $data3['price']; ?> </div></td> 
-		<td align="center"><a href="delete_favorite.php?CusID=<?php echo $data3['id_Product'] ;?>">Delete</a></td>
-		</tr>
+			<td><div align="center"><?php echo $data3['id_Product'] ; ?> </div></td> 
+			<td><?php echo $data3['nameProduct'] ; ?> </td> 
+			<td><div align="center"><?php echo $data3['price']; ?> </div></td> 
+			<td align="center"><a href="delete_favorite.php?CusID=<?php echo $data3['id_Product'] ;?>">Delete</a></td>
+		   </tr>
 		
-		<?
+		<?php
 	}	
-
-?>
-		
-		
+?>	
 		</table>
 			<br>
 		<a href="shopping.php">go home</a> 
 		</font>
-		
-		
-		
-		
-		
-		
-		
 		
     </section>
   </div>
