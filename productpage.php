@@ -64,7 +64,7 @@ if (mysqli_connect_error()){
           <h2><!-- Title for menuset 1 --> Category</h2>
           <hr>
           <ul>
-             <?
+             <?php
 			  $sql1 = "SELECT * FROM Category;";
 	
 		$qry1 = mysqli_query($conn,$sql1);
@@ -75,7 +75,7 @@ if (mysqli_connect_error()){
             <!-- List of links under menuset 1 -->
             <li><a href="category.php?nameC=<? echo $data1['id_Category']; ?> "><? echo $data1['name_Category'] ?></a></li>
             
-			  <? } ?>
+			  <?php } ?>
           </ul>
         </nav>
        
@@ -85,11 +85,11 @@ if (mysqli_connect_error()){
 	  <section class="mainContent">
 	    <div class="productRow">
 		   
-          <p><img src="eCommerceAssets/images/<? echo $data3['img_product'] ?>" width="400" height="396" alt=""/> 
+          <p><img src="eCommerceAssets/images/<?php echo $data3['img_product'] ?>" width="400" height="396" alt=""/> 
             <br>
-            <font face="'Montserrat', sans-serif" color= #919191 size = 10 ><? echo $data3['nameProduct']?></font> <br>
-            <font face="'Montserrat', sans-serif" color= #919191 size = 2 >ID : <? echo $data3['id_Product']?></font> <br>
-            <font face="'Montserrat', sans-serif" color= #919191 size = 2 >Category : <? echo $data3['type'];
+            <font face="'Montserrat', sans-serif" color= #919191 size = 10 ><?php echo $data3['nameProduct']?></font> <br>
+            <font face="'Montserrat', sans-serif" color= #919191 size = 2 >ID : <?php echo $data3['id_Product']?></font> <br>
+            <font face="'Montserrat', sans-serif" color= #919191 size = 2 >Category : <?php echo $data3['type'];
 				
 				$type = $data3['type'];
 				  	$sql4 = "SELECT * FROM Category where id_Category = '$type';";
@@ -101,25 +101,25 @@ if (mysqli_connect_error()){
 				
 				
 				?></font> <br>
-            <font face="'Montserrat', sans-serif" color= #919191 size = 2 >Count : <? echo $data3['countProduct'];?></font> <br>
+            <font face="'Montserrat', sans-serif" color= #919191 size = 2 >Count : <?php echo $data3['countProduct'];?></font> <br>
             <font face="'Montserrat', sans-serif" color= #919191 size = 2 >Description : </font> <br>
-            <font face="'Montserrat', sans-serif" color= #919191 size = 2 ><? echo $data3['description']?></font> <br>
+            <font face="'Montserrat', sans-serif" color= #919191 size = 2 ><?php echo $data3['description']?></font> <br>
             <br>
-          <font face="'Montserrat', sans-serif" color= #919191 size = 4 >Price : <? echo $data3['price']?></font> </p>
+          <font face="'Montserrat', sans-serif" color= #919191 size = 4 >Price : <?php echo $data3['price']?></font> </p>
           <p>&nbsp;</p>
           <p><br>
             
             <article class="productInfo2">
-              <a href="cart.php?id=<? echo $data3['id_Product']?>"><input type="button" name="button" value="Add to Cart" class="CartButton"></a>
+              <a href="cart.php?id=<?php echo $data3['id_Product']?>"><input type="button" name="button" value="Add to Cart" class="CartButton"></a>
 				
-				<a href="favorite.php?id=<? echo $data3['id_Product']?>"><input type="button" name="button" value="Favorite" class="favoButton"></a>
+				<a href="favorite.php?id=<?php echo $data3['id_Product']?>"><input type="button" name="button" value="Favorite" class="favoButton"></a>
 				
 					<br>
 				
              
             </article>
 			
-			<?
+			<?php
 			$sql2 = "SELECT * FROM Product;";
 	
 		$qry = mysqli_query($conn,$sql2);
@@ -132,12 +132,12 @@ if (mysqli_connect_error()){
 			$data2 = mysqli_fetch_array($qry)
 			?>
 			<article class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="eCommerceAssets/images/<?echo $data2['img_product'];?>"></div>
-          <p class="price"><? echo $data2['price'];?> Baht</p>
-          <p class="productContent"><? echo $data2['nameProduct'];?> </p>
-          <a href="productpage.php?proId=<? echo $data2['id_Product'];?>"><input type="button" name="button" value="Buy" class="buyButton"></a>
+          <div><img alt="sample" src="eCommerceAssets/images/<?php echo $data2['img_product'];?>"></div>
+          <p class="price"><?php echo $data2['price'];?> Baht</p>
+          <p class="productContent"><?php echo $data2['nameProduct'];?> </p>
+          <a href="productpage.php?proId=<?php echo $data2['id_Product'];?>"><input type="button" name="button" value="Buy" class="buyButton"></a>
         </article>
-			<? } ?>
+			<?php } ?>
 			
 		
 			
