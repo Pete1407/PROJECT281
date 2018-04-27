@@ -104,6 +104,7 @@
 	<table width="750" border="1">
 <tr>
 	<th width="91"> <div align="center">ProductID </div></th>
+	<th width="91"> <div align="center">Image </div></th>
 	<th width="198"> <div align="center">Name </div></th>
 	<th width="97"> <div align="center">Price </div></th>
 	<th width="30"> <div align="center">Delete </div></th>
@@ -122,6 +123,7 @@
 		
 		?> <tr> 
 			<td><div align="center"><?php echo $data3['id_Product'] ; ?> </div></td> 
+		<td><img src="eCommerceAssets/images/<?php echo $data3['img_product'] ; ?> " width="100" height="101" alt=""/>	</td>
 			<td><?php echo $data3['nameProduct'] ; ?> </td> 
 			<td><div align="center"><?php echo $data3['price']; ?> </div></td> 
 			<td align="center"><a href="delete_favorite.php?CusID=<?php echo $data3['id_Product'] ;?>">Delete</a></td>
