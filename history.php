@@ -1,4 +1,4 @@
-
+ 
 	
 <!doctype html>
 <?php
@@ -33,12 +33,14 @@ if (mysqli_connect_error()){
 <body>
 <div id="mainWrapper">
   <header> 
-    <!-- This is the header content. It contains Logo and links -->
+    
    <a href = "shopping.php"><div id="logo"> <!-- <img src="logoImage.png" alt="sample logo"> --> 
       <!-- Company Logo text --> HelloWorld</div></a>
-    <div id="headerLinks"><a href="index.php" title="Login/Register">Log Out</a>
+    <div id="headerLinks">
+		<a href="index.php" title="Login/Register">Log Out</a>
 		<a href="history.php" title="History">History</a>
-		<a href="favorite.php" title="Favorites">Favorites</a><a href="cart.php" title="Cart">Cart</a></div>
+		<a href="favorite.php" title="Favorites">Favorites</a>
+		<a href="cart.php" title="Cart">Cart</a></div>
   </header>
  
   <section id="offer"> 
@@ -48,7 +50,7 @@ if (mysqli_connect_error()){
   </section>
   <div id="content">
     <section class="sidebar"> 
-      <!-- This adds a sidebar with 1 searchbox,2 menusets, each with 4 links -->
+      <!-- This adds a sidebar with 1 searchbox,2 menusets, each with \4   links -->
 	<form method="post" action="search.php">
       <input type="text"  id="search" name="search" placeholder="Search Name Product">
 		
@@ -85,86 +87,57 @@ if (mysqli_connect_error()){
     
 	  
 	  <section class="mainContent">
-	<font face="'Montserrat', sans-serif" color= #343434 size = 3 >
-	<?php
-
-
-		?>   <h1>Cart</h1>  <?php
-		if(empty($_GET['id'])){
-			//echo "eiei";
-		}else{
-				$id2 = $_GET['id'];
-				$sql7 = "INSERT INTO Shopping_Cart (ID_product)
-  				values ( '$id2' )";
-				$conn->query($sql7);
-				?>    <h3> Add to Cart !</h3>  <?php
-			
-	}
-	
-	?>
-	
-	<table width="750" border="1">
+		  <font face="'Montserrat', sans-serif" color= #ea576b size = 3 >
+			   <h1>History</h1> 
+		  <table width="670" border="1">
 
 <tr>
 
-<th width="91"> <div align="center">ProductID </div></th>
-	<th width="91"> <div align="center">Image </div></th>
-<th width="198"> <div align="center">Name </div></th>
-<th width="97"> <div align="center">Price </div></th>
-<th width="30"> <div align="center">Delete </div></th>
+	<th width="91"> <div align="center">ID Order </div></th>
+	<th width="70"> <div align="center">Date </div></th>
+	<th width="50"> <div align="center">Time </div></th>
+	<th width="80"> <div align="center">Details </div></th>
 </tr>
 
 	<?php
+	$sql4 = "SELECT  * FROM NowUser";
+	$qry4 = mysqli_query($conn,$sql4);
+	$data4 = mysqli_fetch_array($qry4);
 	
+	$user = $data4['UserName'];
 
-	$sql2 = "SELECT  * FROM Shopping_Cart";
+	$sql2 = "SELECT  * FROM History WHERE username_Member = '".$user."'";
 	$qry2 = mysqli_query($conn,$sql2);
-	$count = 0;
+	$id2 = 0;
 	
 	while($data2 = mysqli_fetch_array($qry2)){
-		$id = $data2['ID_product'];
+		$id = $data2['id_Order'];
 		
 		$sql = "SELECT  * FROM Product WHERE id_Product = '".$id."'";
 	
-		$qry = mysqli_query($conn,$sql);
+		if($id == $id2){
+			
+		}else{
 		
-		$data3 = mysqli_fetch_array($qry);
 		
 		?> <tr> 
-		<td><div align="center"><?php echo $data3['id_Product'] ; ?> </div></td> 
-		<td><img src="eCommerceAssets/images/<?php echo $data3['img_product'] ; ?> " width="100" height="101" alt=""/>	</td>
-		<td><?php echo $data3['nameProduct'] ; ?> </td> 
-		<td><div align="center"><?php echo $data3['price']; ?> </div></td> 
-		<td align="center"><a href="delete_cart.php?CusID=<?php echo $data2['num'] ;?>">Delete</a></td>
+			<td><div align="center"><?php echo $id; ?> </div></td> 
+			<td align="center"><?php  echo $data2['date_Order'] ?></td> 
+			<td align="center"><?php  echo $data2['time_Order'] ?> </td> 
+			<td align="center"><a href="OrderDetails.php?OrderID=<?php echo $id ;?>">Details</a></td>
 		</tr>
 		
 		<?php
-		
-		$count += $data3['price'] ;
+		}
+		$id2 = $id;
 		
 	}
 	
 	
 	//$id = "1001";
-	?> </table> <br><br> <?php 
-		echo "total Price : ";
-		echo $count;
-		echo " baht";
-	?> <br> <?php 
-		echo "total Price + VAT 7 % : ";
-		echo $count*1.07;
-		echo " baht";
-		?> <br> 
-			
-			  <br>
-		 <button >
-					<a href="pay.php"><font face="'Montserrat', sans-serif" color= #919191 size = 3 > Pay </font></a>
-			</button>
-	<br>
+	?> </table>
 		
-		
-		<a href="shopping.php">go home</a> 		
-	
+			<a href="shopping.php">go home</a> 		
 		</font>
 	</section>
   </div>

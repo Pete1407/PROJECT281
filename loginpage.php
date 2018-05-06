@@ -33,7 +33,11 @@ if($conn->error)
 		$conn->query($sql2);
 		$sql3 = "DELETE  FROM Like_Product";
 		$conn->query($sql3);
-	
+		$sql5 = "DELETE  FROM NowUser";
+		$conn->query($sql5);
+		$sql4 = "INSERT INTO NowUser (UserName)
+  			values ('$username')";
+		$conn->query($sql4);
 	}
 	else
 	{
