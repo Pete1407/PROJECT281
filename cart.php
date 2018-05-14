@@ -158,6 +158,48 @@ if (mysqli_connect_error()){
 		?> <br> 
 			
 		
+		
+		<?php 
+		
+			$sql5 = "SELECT  * FROM Promotion ORDER BY amount DESC";
+			$qry5 = mysqli_query($conn,$sql5);
+			//echo "Total Price : ".$total . "   <br>";
+			$discount = 0;
+		while($data5 = mysqli_fetch_array($qry5)){
+			$amount = $data5['amount'] ;
+			if($amount < $count){
+				$discount = $data5['discount'];
+			break;
+			}	
+		}
+		
+		
+			$sql6 = "SELECT  * FROM Shipping ORDER BY amount DESC";
+			$qry6 = mysqli_query($conn,$sql6);
+			//echo "Total Price : ".$total . "   <br>";
+			$cost = 0;
+		while($data6 = mysqli_fetch_array($qry6)){
+			$amount = $data6['amount'] ;
+			if($amount < $count){
+				$cost = $data6['shipping_cost'];
+				break;
+			}	
+		}
+		echo "Shipping Cost : ";
+		echo $cost;
+		echo " baht <br>";
+			echo "Discount : ";
+			echo $discount;
+			echo " baht";
+	
+		?><br><?php 
+		
+			echo "Total : ";
+			echo (($count*1.07)-$discount)+$cost;
+			echo " baht <br>";
+		
+		?>
+		
 	
 		
 			  <br>

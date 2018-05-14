@@ -123,11 +123,8 @@ if (mysqli_connect_error()){
 	
 	while($data2 = mysqli_fetch_array($qry3)){
 		$id = $data2['id_Product'];
-		
 		$sql = "SELECT  * FROM Product WHERE id_Product = '".$id."'";
-	
 		$qry = mysqli_query($conn,$sql);
-		
 		$data3 = mysqli_fetch_array($qry);
 		
 		?> <tr> 

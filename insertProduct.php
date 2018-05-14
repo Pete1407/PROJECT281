@@ -243,6 +243,48 @@ if (mysqli_connect_error()){
 </fieldset>
 </form>  
 		  
+		 <br> 
+		  
+<form class="form-horizontal" action = "insertShippingCost.php" method="post">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Shipping Cost</legend>
+
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">AMOUNT</label>  
+  <div class="col-md-4">
+  <input id="product_name" name="amount" placeholder="จำนวนเงิน" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+	<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">SHIPPING COST</label>  
+  <div class="col-md-4">
+  <input id="product_name" name="cost" placeholder="ค่าขนส่ง" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+	
+	<!-- Text input-->
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+  </div>
+  </div>
+
+</fieldset>
+</form>  
+		  
 		  
 		  
 	</section>
