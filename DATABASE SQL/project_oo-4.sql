@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 14, 2018 at 11:13 AM
+-- Generation Time: May 14, 2018 at 03:39 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -367,6 +367,26 @@ INSERT INTO `Promotion` (`PromotionID`, `amount`, `discount`, `point`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Shipping`
+--
+
+CREATE TABLE `Shipping` (
+  `ShippingID` int(10) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `shipping_cost` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Shipping`
+--
+
+INSERT INTO `Shipping` (`ShippingID`, `amount`, `shipping_cost`) VALUES
+(1, 0, 500),
+(2, 3000, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Shopping_Cart`
 --
 
@@ -380,9 +400,7 @@ CREATE TABLE `Shopping_Cart` (
 --
 
 INSERT INTO `Shopping_Cart` (`ID_product`, `num`) VALUES
-(1002, 25),
-(1005, 26),
-(1009, 27);
+(1007, 28);
 
 -- --------------------------------------------------------
 
@@ -452,6 +470,12 @@ ALTER TABLE `Promotion`
   ADD PRIMARY KEY (`PromotionID`);
 
 --
+-- Indexes for table `Shipping`
+--
+ALTER TABLE `Shipping`
+  ADD PRIMARY KEY (`ShippingID`);
+
+--
 -- Indexes for table `Shopping_Cart`
 --
 ALTER TABLE `Shopping_Cart`
@@ -504,10 +528,16 @@ ALTER TABLE `Promotion`
   MODIFY `PromotionID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `Shipping`
+--
+ALTER TABLE `Shipping`
+  MODIFY `ShippingID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `Shopping_Cart`
 --
 ALTER TABLE `Shopping_Cart`
-  MODIFY `num` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `num` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `Subscribe_Promotion`
