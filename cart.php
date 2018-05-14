@@ -23,7 +23,7 @@ if (mysqli_connect_error()){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>eCommerce template By Adobe Dreamweaver CC</title>
+<title>Cart</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="eCommerceAssets/styles/eCommerceStyle.css" rel="stylesheet" type="text/css">
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
@@ -119,7 +119,7 @@ if (mysqli_connect_error()){
 
 	$sql2 = "SELECT  * FROM Shopping_Cart";
 	$qry2 = mysqli_query($conn,$sql2);
-	$count = 0;
+		$count = 0;
 	
 	while($data2 = mysqli_fetch_array($qry2)){
 		$id = $data2['ID_product'];
@@ -139,7 +139,6 @@ if (mysqli_connect_error()){
 		</tr>
 		
 		<?php
-		
 		$count += $data3['price'] ;
 		
 	}
@@ -150,15 +149,23 @@ if (mysqli_connect_error()){
 		echo "total Price : ";
 		echo $count;
 		echo " baht";
-	?> <br> <?php 
-		echo "total Price + VAT 7 % : ";
-		echo $count*1.07;
-		echo " baht";
+	?> <br> 
+		
+		<?php 
+			echo "total Price + VAT 7 % : ";
+			echo $count*1.07;
+			echo " baht";
 		?> <br> 
 			
+		
+	
+		
 			  <br>
 		 <button >
-					<a href="pay.php"><font face="'Montserrat', sans-serif" color= #919191 size = 3 > Pay </font></a>
+					<a href="payCard.php?total=<?php echo $count ?>"><font face="'Montserrat', sans-serif" color= #919191 size = 3 > Credit Card payment</font></a>
+			</button>
+		<button >
+					<a href="payBnak.php?total=<?php echo $count ?>"><font face="'Montserrat', sans-serif" color= #919191 size = 3 > bank transfer payment  </font></a>
 			</button>
 	<br>
 		

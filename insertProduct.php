@@ -196,6 +196,52 @@ if (mysqli_connect_error()){
 
 </fieldset>
 </form>  
+		  <br><br><br><br>
+<form class="form-horizontal" action = "InsertPromotion.php" method="post">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Promotion</legend>
+
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">AMOUNT</label>  
+  <div class="col-md-4">
+  <input id="product_name" name="amount" placeholder="จำนวนเงิน" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+	<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">DISCOUNT</label>  
+  <div class="col-md-4">
+  <input id="product_name" name="discount" placeholder="DISCOUNT" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+	
+	<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">POINT</label>  
+  <div class="col-md-4">
+  <input id="product_name" name="point" placeholder="POINT" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+  </div>
+  </div>
+
+</fieldset>
+</form>  
 		  
 		  
 		  

@@ -2,9 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>Payment</title>
 </head>
-
+<body>
+	
+	
+	
 	<?php 
 		$host = "localhost";
 		$dbusername = "root";
@@ -55,18 +58,51 @@
 	$status = "Processing";
 	$data2 = mysqli_fetch_array($qry2);
 	$id = $data2['ID_product'];
-		echo $id . "   <br>";
-		$sql9 = "INSERT INTO History (id_Order, id_Product, status, date_Order, username_Member, time_Order)
-  			values ('$max','$id','$status','$date','$user','$time')";
+	$total = $_GET['total'];
+	
+		
+			
+		$sql5 = "SELECT  * FROM Promotion ORDER BY amount DESC";
+		$qry5 = mysqli_query($conn,$sql5);
+		echo "Total Price : ".$total . "   <br>";
+	$discount = 0;
+	while($data5 = mysqli_fetch_array($qry5)){
+		$amount = $data5['amount'] ;
+		if($amount < $total){
+			
+			$discount = $data5['discount'];
+			
+			$data_point = mysqli_fetch_array(mysqli_query($conn,"SELECT point,username FROM Member WHERE username = '$user';"))['point'] ."<br>";
+			$a = $data5['point'] +  $data_point;
+			
+			mysqli_query($conn,"UPDATE Member
+			SET point = $a
+			WHERE username = '$user';");
+			break;
+			
+		}
+		
+		
+		
+	}
+		
+	echo "discount : ".$discount . "<br>";
+	echo "Total :".($total-$discount ). "<br>";
+	echo "Reward Points : ".$a."<br>";
+	
+	
+		echo "<br> Product ID :   <br>";
+		$sql9 = "INSERT INTO History (id_Order, id_Product, status, date_Order, username_Member, time_Order,totalPrice,discount)
+  			values ('$max','$id','$status','$date','$user','$time','$total','$discount')";
 	//mysqli_query($conn, $sql9);
 		//$sql9 .= "INSERT INTO History (id_Order, id_Product, status, date_Order, username_Member, time_Order)
-  		
+  	echo $id . "   <br>";	
 	
 	while($data2 = mysqli_fetch_array($qry2)){
 		
 		$id = $data2['ID_product'];
 		echo $id . "   <br>";
-		$sql9 .=	",('$max','$id','$status','$date','$user','$time')";
+		$sql9 .=	",('$max','$id','$status','$date','$user','$time','$total','$discount')";
 			
 		
 	}
@@ -84,6 +120,6 @@
 	 <a href=javascript:history.back(1)><font face="'Montserrat', sans-serif" color= #000000 size = 2 >go back</font> </a> 
 	
 	
-<body>
+
 </body>
 </html>

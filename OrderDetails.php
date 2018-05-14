@@ -23,7 +23,7 @@ if (mysqli_connect_error()){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>eCommerce template By Adobe Dreamweaver CC</title>
+<title>Order Details</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="eCommerceAssets/styles/eCommerceStyle.css" rel="stylesheet" type="text/css">
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
@@ -92,6 +92,11 @@ if (mysqli_connect_error()){
 			 <h4> <font face="'Montserrat', sans-serif" color= #FAB44A size = 2 >
 			  		#Order - <?php echo  $orderId  ?> <br>
 				 	Status : Processing </font> </h4>
+			  <?php
+			 
+			 $dataa = mysqli_fetch_array(mysqli_query($conn,"SELECT  * FROM History WHERE id_Order = '".$orderId."'"))['discount'];
+				 
+				 ?>
 			  
 		  <table width="670" border="1">
 
@@ -142,12 +147,31 @@ if (mysqli_connect_error()){
 	
 	//$id = "1001";
 	?> </table>
-			 <?php      
-			  	echo $count;
+			 <br><br> <?php 
+		echo "total Price : ";
+		echo $count;
+		echo " baht";
+	?> <br> 
+		
+		<?php 
+			echo "total Price + VAT 7 % : ";
+			echo $count*1.07;
+			echo " baht";
+		?> <br> 
+
+			  <?php  
+			  echo "discount  : ";
+			echo $dataa;
+			echo " baht";
 			  
-			  ?> 
+			?><br>
+			<?php  
+			  echo "total  : ";
+			echo ($count*1.07)-$dataa;
+			echo " baht";
 			  
-			 
+			?><br>
+			 <a href="ex.php?orderID=<?php echo $orderId ?> ">invoice</a> <br>
 			<a href="shopping.php">go home</a> 	
 			 
 		</font>
