@@ -17,7 +17,18 @@ if (mysqli_connect_error()){
     . mysqli_connect_error());
 }
 
+	$sql4 = "SELECT  * FROM NowUser";
+	$qry4 = mysqli_query($conn,$sql4);
+	$data4 = mysqli_fetch_array($qry4);
+	
+	$user = $data4['UserName'];
 
+	$sql2 = "SELECT  * FROM Member WHERE username = '".$user."'";
+	$qry2 = mysqli_query($conn,$sql2);
+	$id2 = 0;
+	
+	$data2 = mysqli_fetch_array($qry2);
+	$point = $data2['point'];
 
 ?>
 <html>
@@ -36,9 +47,13 @@ if (mysqli_connect_error()){
     <!-- This is the header content. It contains Logo and links -->
    <a href = "shopping.php"><div id="logo"> <!-- <img src="logoImage.png" alt="sample logo"> --> 
       <!-- Company Logo text --> HelloWorld</div></a>
-    <div id="headerLinks"><a href="index.php" title="Login/Register">Log Out</a>
+       <div id="headerLinks">
+		<a href="index.php" title="Login/Register">Log Out</a>
 		<a href="history.php" title="History">History</a>
-		<a href="favorite.php" title="Favorites">Favorites</a><a href="cart.php" title="Cart">Cart</a></div>
+		<a href="favorite.php" title="Favorites">Favorites</a>
+		<a href="cart.php" title="Cart">Cart</a>
+	  <font size="2"><?php  echo "&nbsp&nbsp&nbsp&nbsp&nbsp".$user.",  &nbsp Point : ".$point ?></font>
+	</div>
   </header>
  
   <section id="offer"> 
